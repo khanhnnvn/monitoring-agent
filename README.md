@@ -52,11 +52,10 @@ DELETE_SERVER | DELETE | ```/user/:userId/servers/:serverId```
 	- [x] validates User Access Key via **LDS:VALIDATE_USER**
 	- [x] registers Server via **LDS:ADD_SERVER**
 		- [x] The serverId received as response is stored in process env.	
-- [ ] At **Settings:ET_INTERVAL**, the agent reports the following to **LDS:UPDATE_SERVER**`:
-	- [ ] RAM utilization
-	- [ ] CPU utilization
-	- [ ] Uptime
-	- [ ] Public IP
+- [x] At **Settings:ET_INTERVAL**, the agent reports the following to **LDS:UPDATE_SERVER**`:
+	- [x] RAM utilization
+	- [x] CPU utilization
+	- [x] Uptime
 - [ ] Upon exiting (error or stop), the agent
 	- [ ] Server is de-registered via **LDS:DELETE_SERVER**
 - [ ] Upon a websocket connection from LDS, the monitoring agent begins to stream all available system stats to the originating dashboard

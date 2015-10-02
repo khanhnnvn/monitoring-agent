@@ -23,9 +23,9 @@ function phoneHome() {
     method: 'PUT',
     json: true,
     body: {
-      hostname: os.hostname(),
-      cpu: Math.random(),
-      ram: Math.random(),
+      cpu_utilization: os.loadavg()[0],
+      ram_utilization: os.totalmem() - os.freemem(),
+      uptime: os.uptime(),
     }
   };
   
