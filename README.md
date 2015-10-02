@@ -36,11 +36,11 @@ ET_INTERVAL | 60000 | Interval in milliseconds at which the monitoring agent *ph
 
 ## Architecture
 
-- [ ] Upon starting the node process
+- [ ] Upon starting, the agent
 	- [ ] validates User Access Key against LDS
 	- [ ] registers Server via LDS ```POST /user/:userId/servers```
 		- [ ] The serverId received as response is stored locally	
-- [ ] Upon exiting (error or stop) the node process
+- [ ] Upon exiting (error or stop), the agent
 	- [ ] Server is de-registered via LDS ```DELETE /user/:userId/servers/:serverId```
 - [ ] At a set interval (Settings:ET_INTERVAL), the agent reports the following to LDS:
 	- [ ] RAM utilization
