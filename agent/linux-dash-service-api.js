@@ -85,6 +85,17 @@ var ldsAPI = {
     setInterval(phoneHome, settings.ET_INTERVAL);
   },
 
+  deregister: function (userAccessKey) {
+    var url = apiBaseUrl + 'users/' + userAccessKey + '/servers/' + process.env["LINUX_DASH_SEVER_ID"];
+
+    var options = {
+      uri: url,
+      method: 'DELETE',
+    };
+
+    return http(options);
+  }
+
 };
 
 module.exports = ldsAPI; 

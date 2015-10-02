@@ -56,6 +56,6 @@ DELETE_SERVER | DELETE | ```/user/:userId/servers/:serverId```
 	- [x] RAM utilization
 	- [x] CPU utilization
 	- [x] Uptime
-- [ ] Upon exiting (error or stop), the agent
-	- [ ] Server is de-registered via **LDS:DELETE_SERVER**
+- [x] Upon exiting (error or stop), the agent
+	- [x] Server is de-registered via **LDS:DELETE_SERVER**
 - [ ] Upon a websocket connection from LDS, the monitoring agent begins to stream all available system stats to the originating dashboard

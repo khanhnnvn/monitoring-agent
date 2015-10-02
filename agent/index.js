@@ -6,8 +6,14 @@ var fs       = require('fs');
 var http     = require('request-promise');
 var settings = JSON.parse(fs.readFileSync('../config.json', 'utf8'));
 var preStart = require('./pre-start');
+var preEnd   = require('./pre-end');
 
+/**
+ * Monitoring Agent is always called with
+ * user access key. ALWAYS.
+ */
 var args = require('minimist')(process.argv.slice(2));
+
 /**
  * Before starting monitoring agent,
  * run validation & initialization steps
@@ -52,3 +58,11 @@ var server = app.listen(settings.PORT, function () {
 
   console.log('Linux Dash Monitoring Agent started @ http://%s:%s', host, port);
 });
+
+/**
+ * Process exit event handlers 
+ * to call preEnd routine
+ */
+process.on('exit', preEnd.bind(null, args['user-access-key']));
+process.on('SIGINT', preEnd.bind(null, args['user-access-key']));
+process.on('uncaughtException', preEnd.bind(null, args['user-access-key']));

@@ -1,4 +1,3 @@
-var http = require('request-promise');
 var lds  = require('./linux-dash-service-api');
 
 module.exports = function (userAccessKey) {
