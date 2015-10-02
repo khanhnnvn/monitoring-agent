@@ -34,15 +34,25 @@ PORT | 8080 | Server port on which linux dash node server listens for connection
 ET_INTERVAL | 60000 | Interval in milliseconds at which the monitoring agent *phones home* to LDS
 
 
+## LDS Endpoints
+
+
+Name | Method | Endpoint
+------------ | ------------- | -------------
+VALIDATE_USER | POST | ```/user/:userId/servers```
+DELETE_SERVER | DELETE | ```/user/:userId/servers/:serverId```
+UPDATE_SERVER | PUT | ```/user/:userId/servers/:serverId```
+
+
 ## Architecture
 
 - [ ] Upon starting, the agent
 	- [ ] validates User Access Key against LDS
-	- [ ] registers Server via LDS ```POST /user/:userId/servers```
+	- [ ] registers Server via **LDS:VALIDATE_USER**
 		- [ ] The serverId received as response is stored locally	
 - [ ] Upon exiting (error or stop), the agent
-	- [ ] Server is de-registered via LDS ```DELETE /user/:userId/servers/:serverId```
-- [ ] At a set interval (Settings:ET_INTERVAL), the agent reports the following to LDS:
+	- [ ] Server is de-registered via **LDS:DELETE_SERVER**
+- [ ] At Settings:ET_INTERVAL, the agent reports the following to **LDS:UPDATE_SERVER**`:
 	- [ ] RAM utilization
 	- [ ] CPU utilization
 	- [ ] Uptime
