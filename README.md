@@ -18,7 +18,7 @@ Example:
 node linux-dash-monitor.js --user-access-key ABC-123-456
 ```
 
-## Defaults
+## Settings
 
 Settings may be updated via ```config.json``` in the root directory of the monitoring agent module.
 
@@ -27,6 +27,8 @@ They may also be updated via flags
 ```
 node linux-dash-settings.js --update [key] [value]
 ```
+
+** List of Available Settings **
 
 Key | Value | Description
 ------------ | ------------- | -------------
