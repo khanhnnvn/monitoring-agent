@@ -1,8 +1,9 @@
 var apiBaseUrl = 'http://localhost:3000/';
 var logAndKill = require('./log-and-kill');
-var http = require('request-promise');
-var getIP = require('external-ip')();
-var os = require("os");
+var http       = require('request-promise');
+var getIP      = require('external-ip')();
+var os         = require("os");
+var settings   = JSON.parse(require('fs').readFileSync('../config.json', 'utf8'));
 
 var cachedUserAccessKey;
 
@@ -12,7 +13,32 @@ function getPublicIp() {
   });
 }
 
-module.exports = {
+function phoneHome() {
+  var url = apiBaseUrl 
+    + 'users/' + cachedUserAccessKey 
+    + '/servers/' + process.env["LINUX_DASH_SEVER_ID"];
+
+  var options = {
+    uri: url,
+    method: 'PUT',
+    json: true,
+    body: {
+      hostname: os.hostname(),
+      cpu: Math.random(),
+      ram: Math.random(),
+    }
+  };
+  
+  return http(options).catch(function (err) {
+
+    console.error("Error occurred while checking in with Linux Dash Service.");
+    console.error(err.message);
+
+  });
+
+}
+
+var ldsAPI = {
   
   _setAccessKey: function (key) {
     cachedUserAccessKey = key;
@@ -45,7 +71,6 @@ module.exports = {
     };
 
     return http(options).then(function (registrationResponse) {
-      
       process.env["LINUX_DASH_SEVER_ID"] = registrationResponse.server_id;
 
     }).catch(function (err) {
@@ -56,4 +81,10 @@ module.exports = {
 
   },
 
+  setupCheckinInterval: function () {
+    setInterval(phoneHome, settings.ET_INTERVAL);
+  },
+
 };
+
+module.exports = ldsAPI; 

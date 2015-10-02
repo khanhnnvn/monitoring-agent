@@ -1,15 +1,16 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-var spawn = require('child_process').spawn;
-var fs = require('fs');
+var express  = require('express');
+var app      = express();
+var path     = require('path');
+var spawn    = require('child_process').spawn;
+var fs       = require('fs');
+var http     = require('request-promise');
 var settings = JSON.parse(fs.readFileSync('../config.json', 'utf8'));
 var preStart = require('./pre-start');
 
 var args = require('minimist')(process.argv.slice(2));
 /**
  * Before starting monitoring agent,
- * run verification & validation steps
+ * run validation & initialization steps
  */
 preStart(args['user-access-key']);
 
