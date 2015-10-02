@@ -1,0 +1,19 @@
+{
+  "name": "linux-dash-monitoring-agent",
+  "version": "0.0.1",
+  "description": "Linux Dash monitoring agent for servers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linux-dash/monitoring-agent.git"
+  },
+  "author": "Afaq Tariq <afaq05@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linux-dash/monitoring-agent/issues"
+  },
+  "homepage": "https://github.com/linux-dash/monitoring-agent"
+}
