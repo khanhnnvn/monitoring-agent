@@ -28,16 +28,15 @@ They may also be updated via flags
 node linux-dash-settings.js --update [key] [value]
 ```
 
-**List of Available Settings**
+**List of Setting Defaults**
 
-Key | Value | Description
+Key | Default | Description
 ------------ | ------------- | -------------
 PORT | 8080 | Server port on which linux dash node server listens for connection requests from LDS
 ET_INTERVAL | 60000 | Interval in milliseconds at which the monitoring agent *phones home* to LDS
 
 
 ## LDS Endpoints
-
 
 Name | Method | Endpoint
 ------------ | ------------- | -------------
