@@ -48,11 +48,11 @@ DELETE_SERVER | DELETE | ```/user/:userId/servers/:serverId```
 
 ## Architecture
 
-- [ ] Upon starting, the agent
-	- [ ] validates User Access Key against LDS
-	- [ ] registers Server via **LDS:ADD_SERVER**
-		- [ ] The serverId received as response is stored locally	
-- [ ] At Settings:ET_INTERVAL, the agent reports the following to **LDS:UPDATE_SERVER**`:
+- [x] Upon starting, the agent
+	- [x] validates User Access Key via **LDS:VALIDATE_USER**
+	- [x] registers Server via **LDS:ADD_SERVER**
+		- [x] The serverId received as response is stored in process env.	
+- [ ] At **Settings:ET_INTERVAL**, the agent reports the following to **LDS:UPDATE_SERVER**`:
 	- [ ] RAM utilization
 	- [ ] CPU utilization
 	- [ ] Uptime
