@@ -41,21 +41,22 @@ ET_INTERVAL | 60000 | Interval in milliseconds at which the monitoring agent *ph
 Name | Method | Endpoint
 ------------ | ------------- | -------------
 VALIDATE_USER | POST | ```/user/:userId/servers```
-DELETE_SERVER | DELETE | ```/user/:userId/servers/:serverId```
+ADD_SERVER | POST | ```/user/:userId/servers/```
 UPDATE_SERVER | PUT | ```/user/:userId/servers/:serverId```
+DELETE_SERVER | DELETE | ```/user/:userId/servers/:serverId```
 
 
 ## Architecture
 
 - [ ] Upon starting, the agent
 	- [ ] validates User Access Key against LDS
-	- [ ] registers Server via **LDS:VALIDATE_USER**
+	- [ ] registers Server via **LDS:ADD_SERVER**
 		- [ ] The serverId received as response is stored locally	
-- [ ] Upon exiting (error or stop), the agent
-	- [ ] Server is de-registered via **LDS:DELETE_SERVER**
 - [ ] At Settings:ET_INTERVAL, the agent reports the following to **LDS:UPDATE_SERVER**`:
 	- [ ] RAM utilization
 	- [ ] CPU utilization
 	- [ ] Uptime
 	- [ ] Public IP
+- [ ] Upon exiting (error or stop), the agent
+	- [ ] Server is de-registered via **LDS:DELETE_SERVER**
 - [ ] Upon a websocket connection from LDS, the monitoring agent begins to stream all available system stats to the originating dashboard
