@@ -28,7 +28,7 @@ They may also be updated via flags
 node linux-dash-settings.js --update [key] [value]
 ```
 
-** List of Available Settings **
+**List of Available Settings**
 
 Key | Value | Description
 ------------ | ------------- | -------------
