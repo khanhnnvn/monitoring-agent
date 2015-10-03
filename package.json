@@ -1,8 +1,8 @@
 {
   "name": "linux-dash-monitoring-agent",
   "version": "0.0.1",
-  "description": "Linux Dash monitoring agent for servers.",
-  "main": "index.js",
+  "description": "Linux Dash monitoring agent.",
+  "main": "agent/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

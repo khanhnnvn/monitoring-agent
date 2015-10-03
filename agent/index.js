@@ -1,6 +1,5 @@
 var express  = require('express');
 var app      = express();
-var path     = require('path');
 var spawn    = require('child_process').spawn;
 var fs       = require('fs');
 var http     = require('request-promise');
