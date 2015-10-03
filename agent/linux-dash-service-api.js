@@ -1,7 +1,6 @@
 var apiBaseUrl = 'http://localhost:3000/';
 var logAndKill = require('./log-and-kill');
 var http       = require('request-promise');
-var getIP      = require('external-ip')();
 var os         = require("os");
 var settings   = JSON.parse(require('fs').readFileSync('../config.json', 'utf8'));
 
