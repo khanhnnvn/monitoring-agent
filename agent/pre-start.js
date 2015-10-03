@@ -8,6 +8,7 @@ module.exports = function (userAccessKey) {
    }
 
   return lds
+  	.pingServer()
     .verifyUserAccessKey(userAccessKey) // Verify User Access Key with LDS
     .then(lds.register) // Register server with LDS
     .then(lds.setupCheckinInterval); // Setup LDS Phone Home Interval

@@ -18,14 +18,20 @@ function phoneHome() {
     + 'users/' + cachedUserAccessKey 
     + '/servers/' + process.env["LINUX_DASH_SEVER_ID"];
 
+  console.log(os.totalmem(), os.freemem());
+  console.log(os.loadavg()[0]);
+
+  var ramUtilization = parseInt((os.freemem() / os.totalmem()) * 100);
+  var cpuUtilization = parseInt((os.loadavg()[0] * 100));
+
   var options = {
     uri: url,
     method: 'PUT',
     json: true,
     body: {
-      cpu_utilization: os.loadavg()[0],
-      ram_utilization: os.totalmem() - os.freemem(),
-      uptime: os.uptime(),
+      cpu_utilization: cpuUtilization,
+      ram_utilization: ramUtilization,
+      uptime: parseInt(os.uptime(), 10),
     }
   };
   
@@ -42,6 +48,15 @@ var ldsAPI = {
   
   _setAccessKey: function (key) {
     cachedUserAccessKey = key;
+  },
+
+  pingServer: function () {
+
+    http(apiBaseUrl+'ping').catch(function () {
+      logAndKill("Cannot reach Linux Dash API.");
+    });
+
+    return this;
   },
 
   verifyUserAccessKey: function (userAccessKey) {
