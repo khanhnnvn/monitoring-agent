@@ -1,4 +1,5 @@
-var lds  = require('./linux-dash-service-api');
+var lds        = require('./linux-dash-service-api');
+var logAndKill = require('./log-and-kill');
 
 module.exports = function (userAccessKey) {
 
