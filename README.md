@@ -2,9 +2,13 @@
 
 Linux Dash monitoring agent for servers.
 
+**To install Linux Dash, Please see [linux-dash/cli](https://github.com/linux-dash/cli)**
+
 ## Description
 
-This tool contains a node server which is open to websocket connections from Linux Dash Service (LDS). 
+This tool contains a node server which is open to websocket connections from Linux Dash Service (LDS). It also periodically reports server status to LDS. 
+
+The agent is an internal depedency and should not be directly installed.
 
 **Linux Dash Service:** Refers to a publicly accessible subset of Linux Dash API endpoints.
 
