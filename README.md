@@ -63,3 +63,7 @@ DELETE_SERVER | DELETE | ```/user/:userId/servers/:serverId```
 - [x] Upon exiting (error or stop), the agent
 	- [x] Server is de-registered via **LDS:DELETE_SERVER**
 - [ ] Upon a websocket connection from LDS, the monitoring agent begins to stream all available system stats to the originating dashboard
+- [ ] Replace legacy python modules with JS streams 
+	- speedtest
+- [ ] Remove legacy module config
+- [ ] Remove internet speed module (sh)
