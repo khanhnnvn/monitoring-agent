@@ -1,13 +1,13 @@
 var apiBaseUrl = 'http://localhost:3000/';
 var logAndKill = require('./log-and-kill');
-var http       = require('request-promise');
+var http       = require('axios');
 var os         = require("os");
 var settings   = JSON.parse(require('fs').readFileSync('../config.json', 'utf8'));
 
 var cachedUserAccessKey;
 
 function getPublicIp() {
-  return http('https://api.ipify.org?format=json').then(function (res) {
+  return http.get('https://api.ipify.org?format=json').then(function (res) {
     return res.ip;
   });
 }
@@ -34,7 +34,7 @@ function phoneHome() {
     }
   };
   
-  return http(options).catch(function (err) {
+  return http.get(options).catch(function (err) {
 
     console.error("Error occurred while checking in with Linux Dash Service.");
     console.error(err.message);
@@ -51,7 +51,7 @@ var ldsAPI = {
 
   pingServer: function () {
 
-    http(apiBaseUrl+'ping').catch(function () {
+    http.get(apiBaseUrl+'ping').catch(function () {
       logAndKill("Cannot reach Linux Dash API.");
     });
 
@@ -65,7 +65,7 @@ var ldsAPI = {
 
     var url = apiBaseUrl + 'users/' + cachedUserAccessKey + '/verify';
 
-    return http(url).catch(function (err) {
+    return http.get(url).catch(function (err) {
 
       logAndKill("User Access Key is invalid.");
 
@@ -84,7 +84,7 @@ var ldsAPI = {
       }
     };
 
-    return http(options).then(function (registrationResponse) {
+    return http.get(options).then(function (registrationResponse) {
       process.env["LINUX_DASH_SEVER_ID"] = registrationResponse.server_id;
 
     }).catch(function (err) {
@@ -107,7 +107,7 @@ var ldsAPI = {
       method: 'DELETE',
     };
 
-    return http(options);
+    return http.get(options);
   }
 
 };
