@@ -24,7 +24,7 @@ function phoneHome() {
   var cpuUtilization = parseInt((os.loadavg()[0] * 100));
 
   var options = {
-    uri: url,
+    url: url,
     method: 'PUT',
     json: true,
     body: {
@@ -34,7 +34,7 @@ function phoneHome() {
     }
   };
   
-  return http.get(options).catch(function (err) {
+  return http(options).catch(function (err) {
 
     console.error("Error occurred while checking in with Linux Dash Service.");
     console.error(err.message);
@@ -76,7 +76,7 @@ var ldsAPI = {
   register: function () {
 
     var options = {
-      uri: apiBaseUrl + 'users/' + cachedUserAccessKey + '/servers',
+      url: apiBaseUrl + 'users/' + cachedUserAccessKey + '/servers',
       method: 'POST',
       json: true,
       body: {
@@ -84,7 +84,7 @@ var ldsAPI = {
       }
     };
 
-    return http.get(options).then(function (registrationResponse) {
+    return http(options).then(function (registrationResponse) {
       process.env["LINUX_DASH_SEVER_ID"] = registrationResponse.server_id;
 
     }).catch(function (err) {
@@ -103,11 +103,11 @@ var ldsAPI = {
     var url = apiBaseUrl + 'users/' + userAccessKey + '/servers/' + process.env["LINUX_DASH_SEVER_ID"];
 
     var options = {
-      uri: url,
+      url: url,
       method: 'DELETE',
     };
 
-    return http.get(options);
+    return http(options);
   }
 
 };
