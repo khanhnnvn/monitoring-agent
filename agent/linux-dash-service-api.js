@@ -1,8 +1,8 @@
-var apiBaseUrl = 'http://localhost:3000/';
+var settings   = require('../config');
+var apiBaseUrl = settings.LDS_API_URL;
 var logAndKill = require('./log-and-kill');
 var http       = require('axios');
 var os         = require("os");
-var settings   = JSON.parse(require('fs').readFileSync('../config.json', 'utf8'));
 
 var cachedUserAccessKey;
 

@@ -2,7 +2,7 @@ var express  = require('express');
 var app      = express();
 var spawn    = require('child_process').spawn;
 var fs       = require('fs');
-var settings = JSON.parse(fs.readFileSync('../config.json', 'utf8'));
+var settings = require('../config');
 var preStart = require('./pre-start');
 var preEnd   = require('./pre-end');
 
