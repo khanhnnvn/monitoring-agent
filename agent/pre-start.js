@@ -1,3 +1,5 @@
+"use strict";
+
 var lds        = require('./linux-dash-service-api');
 var logAndKill = require('./log-and-kill');
 

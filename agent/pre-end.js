@@ -1,3 +1,5 @@
+"use strict";
+
 var lds  = require('./linux-dash-service-api');
 
 module.exports = function (userAccessKey) {

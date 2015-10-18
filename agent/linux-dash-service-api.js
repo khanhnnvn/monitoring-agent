@@ -1,3 +1,5 @@
+"use strict";
+
 var settings   = require('../config');
 var apiBaseUrl = settings.LDS_API_URL;
 var logAndKill = require('./log-and-kill');
